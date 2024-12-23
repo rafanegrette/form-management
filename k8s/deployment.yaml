@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: form-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: form-management
+  template:
+    metadata:
+      labels:
+        app: form-management
+    spec:
+      containers:
+        -name: form-management
+        image: gcr.io/ralphqa/form-management:latest
+        ports:
+          - containerPort: 8080
