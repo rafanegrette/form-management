@@ -2,21 +2,11 @@ FROM gradle:8.7.0-jdk21-alpine AS build
 LABEL authors="rafanegrette"
 WORKDIR /workspace/app
 
-COPY gradlew .
-COPY gradle gradle/
-COPY build.gradle .
-COPY settings.gradle .
-
-# Make gradlew executable
-RUN chmod +x gradlew
+COPY . /workspace/app
 
 RUN apk add gcompat
 
-# Then copy the rest of the source code
-COPY src src/
-
-# Use gradlew instead of gradle for better build reproducibility
-RUN ./gradlew clean build --no-daemon
+RUN gradle clean build
 
 FROM gradle:8.7.0-jdk21-alpine
 VOLUME /tmp
