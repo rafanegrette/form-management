@@ -12,5 +12,5 @@ FROM gradle:8.7.0-jdk21-alpine
 VOLUME /tmp
 ARG DEPENDENCY=/workspace/app/build/
 COPY --from=build ${DEPENDENCY}/libs/*-SNAPSHOT.jar app.jar
-
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
