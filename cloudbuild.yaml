@@ -1,4 +1,11 @@
 steps:
+  - name: gradle:8.5-jdk21
+    entrypoint: gradle
+    args: ['--version']
+
+  - name: gradle:8.5-jdk21
+    entrypoint: gradle
+    args: ['test']
 
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
