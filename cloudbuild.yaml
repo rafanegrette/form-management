@@ -1,6 +1,5 @@
 steps:
-  - name: gradle:8.5-jdk21
-    entrypoint: gradle
+  - name: 'gcr.io/cloud-builders/gradle'
     args: ['build']
 
   # Build the container image
