@@ -1,11 +1,4 @@
 steps:
-  # Build the application with Gradle
-  - name: 'gradle:jdk21'
-    entrypoint: 'gradle'
-    args: ['build']
-    dir: '/workspace'
-    env:
-      - 'GRADLE_USER_HOME=/workspace/.gradle'
 
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
