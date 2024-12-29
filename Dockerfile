@@ -1,4 +1,21 @@
 FROM gradle:8.7.0-jdk21-alpine AS build
 LABEL authors="rafanegrette"
-ADD /build/libs/form-management-0.0.1-SNAPSHOT.jar app.jar
-CMD ["java", "-jar", "app.jar"]
+WORKDIR /workspace/app
+
+COPY . /workspace/app
+
+RUN apk add gcompat
+
+COPY gradlew /workspace/app/
+COPY gradle /workspace/app/gradle
+COPY build.gradle.kts /workspace/app/
+COPY settings.gradle.kts /workspace/app/
+
+RUN gradle clean build
+
+FROM gradle:8.7.0-jdk21-alpine
+VOLUME /tmp
+ARG DEPENDENCY=/workspace/app/build/
+COPY --from=build ${DEPENDENCY}/libs/*-SNAPSHOT.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
