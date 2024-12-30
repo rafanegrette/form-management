@@ -27,6 +27,10 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+springBoot {
+	mainClass.set("com.rafanegrette.qa.formmanagement.FormManagementApplicationKt")
+}
+
 kotlin {
 	compilerOptions {
 		freeCompilerArgs.addAll("-Xjsr305=strict")
