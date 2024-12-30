@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: Form Management
+server:
+  servlet:
+    context-path: /api/
