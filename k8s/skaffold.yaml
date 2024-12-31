@@ -2,14 +2,18 @@ apiVersion: skaffold/v4beta7
 kind: Config
 metadata:
   name: form-management
-profiles:
-  - name: main-cluster
-    manifests:
-      rawYaml:
-        - k8s/deployment.yaml
-        - k8s/service.yaml
+manifests:
+  rawYaml:
+    - k8s/deployment.yaml
+    - k8s/service.yaml
 build:
+  googleCloudBuild:
+    projectId: PROJECT_ID
   artifacts:
     - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
       docker:
         dockerfile: Dockerfile
+deploy:
+  kubectl: {}
+profiles:
+  - name: main-cluster
