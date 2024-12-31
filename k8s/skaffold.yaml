@@ -1,22 +1,13 @@
-apiVersion: skaffold/v4beta5
+apiVersion: skaffold/v4beta7
 kind: Config
 metadata:
   name: form-management
 profiles:
   - name: main-cluster
-    deploy:
-      kubectl:
-        defaultNamespace: default
-        flags:
-          apply: ["--force"]
-        hooks:
-          before:
-            - host:
-                command: ["kubectl", "apply", "-f", "k8s/deployment.yaml"]
-                os: [darwin, linux]
-            - host:
-                command: ["kubectl", "apply", "-f", "k8s/service.yaml"]
-                os: [darwin, linux]
+    manifests:
+      rawYaml:
+        - k8s/deployment.yaml
+        - k8s/service.yaml
 build:
   artifacts:
     - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
