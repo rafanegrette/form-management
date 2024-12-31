@@ -19,6 +19,6 @@ profiles:
                 os: [darwin, linux]
 build:
   artifacts:
-    - image: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/form-management/form-management:latest
+    - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
       docker:
         dockerfile: Dockerfile
