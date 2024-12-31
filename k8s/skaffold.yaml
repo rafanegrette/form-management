@@ -4,11 +4,11 @@ metadata:
   name: form-management
 profiles:
   - name: main-cluster
-  deploy:
-    kubectl:
-      manifests:
-        - k8s/deployment.yaml
-        - k8s/service.yaml
+    deploy:
+      kubectl:
+        manifests:
+          - k8s/deployment.yaml
+          - k8s/service.yaml
 build:
   artifacts:
     - image: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/form-management/form-management:latest
