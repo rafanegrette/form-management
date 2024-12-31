@@ -6,9 +6,17 @@ profiles:
   - name: main-cluster
     deploy:
       kubectl:
-        manifests:
-          - k8s/deployment.yaml
-          - k8s/service.yaml
+        defaultNamespace: default
+        flags:
+          apply: ["--force"]
+        hooks:
+          before:
+            - host:
+                command: ["kubectl", "apply", "-f", "k8s/deployment.yaml"]
+                os: [darwin, linux]
+            - host:
+                command: ["kubectl", "apply", "-f", "k8s/service.yaml"]
+                os: [darwin, linux]
 build:
   artifacts:
     - image: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/form-management/form-management:latest
