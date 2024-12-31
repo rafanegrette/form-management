@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: form-management
+deploy:
+  kubectl:
+    manifests:
+      - k8s/deployment.yaml
+      - k8s/service.yaml
+build:
+  artifacts:
+    - image: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/form-management/form-management:latest
+      docker:
+        dockerfile: Dockerfile
