@@ -5,16 +5,18 @@ metadata:
 build:
   artifacts:
       - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
-        context: src
+        context: ..
+  googleCloudBuild:
+    projectId: PROJECT_ID
 manifests:
   rawYaml:
-    - manifest.yml
+    - k8s/manifest.yaml
 profiles:
   - name: main-cluster
     build:
       artifacts:
         - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
-          context: src
+          context: ..
     manifests:
       rawYaml:
-        - manifest.yml
+        - k8s/manifest.yaml
