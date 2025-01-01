@@ -1,4 +1,4 @@
-apiVersion: skaffold/v4beta7
+apiVersion: skaffold/v3
 kind: Config
 metadata:
   name: form-management
@@ -6,11 +6,15 @@ build:
   artifacts:
       - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
         context: src
+manifests:
+  rawYaml:
+    - manifest.yml
 profiles:
   - name: main-cluster
     build:
       artifacts:
         - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
           context: src
-    deploy:
-      kubectl: { }
+    manifests:
+      rawYaml:
+        - manifest.yml
