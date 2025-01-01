@@ -25,7 +25,7 @@ spec:
         app: form-management
     spec:
       containers:
-        -name: form-management
-        image: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/form-management/form-management:latest
-        ports:
-          - containerPort: 8080
+        - name: form-management
+          image: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/form-management/form-management:latest
+          ports:
+            - containerPort: 8080
