@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: form-management
-          image: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/form-management/form-management:latest
+          image: us-central1-docker.pkg.dev/ralphqa/form-management/form-management:latest
           ports:
             - containerPort: 8080
               protocol: TCP
