@@ -4,19 +4,19 @@ metadata:
   name: form-management
 build:
   artifacts:
-      - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
+      - image: us-central1-docker.pkg.dev/ralphqa/form-management/form-management
         context: ..
   googleCloudBuild:
-    projectId: PROJECT_ID
+    projectId: ralphqa
 manifests:
   rawYaml:
-    - k8s/manifest.yaml
+    - manifest.yaml
 profiles:
   - name: main-cluster
     build:
       artifacts:
-        - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
+        - image: us-central1-docker.pkg.dev/ralphqa/form-management/form-management
           context: ..
     manifests:
       rawYaml:
-        - k8s/manifest.yaml
+        - manifest.yaml
