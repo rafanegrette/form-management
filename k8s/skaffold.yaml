@@ -6,17 +6,11 @@ build:
   artifacts:
       - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
         context: src
-manifests:
-  rawYaml:
-    - k8s/deployment.yaml
 profiles:
   - name: main-cluster
     build:
       artifacts:
         - image: REGION-docker.pkg.dev/PROJECT_ID/form-management/form-management
           context: src
-    manifests:
-      rawYaml:
-        - k8s/deployment.yaml
     deploy:
       kubectl: { }
